@@ -5,6 +5,7 @@ import java.util.Scanner;
  * A simple customers counter to a restaurant
  * 
  * @author Gabriel Perini and Camila Ilges
+ * @package avaliativaE2
  * 
 */
 public class Restaurante {
