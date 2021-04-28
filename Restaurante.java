@@ -37,5 +37,6 @@ public class Restaurante {
             System.out.println("O restaurante possui " + customersLenght + " clientes!\n");
         }
         System.out.print("Lotação máxima de 100 clientes atingida!");
+        in.close();
     }
 }
