@@ -15,5 +15,6 @@ public class Fibonnaci {
         int sofs = 2;
         int gabs = 5;
         int mila = 8;
+        int gabs2 = 16;
     }
 }
