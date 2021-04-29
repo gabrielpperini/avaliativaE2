@@ -17,26 +17,17 @@ public class Restaurante {
         int customersLenght = 0;
 
         while(customersLenght < customersLimit){
-            System.out.print("Algum cliente saiu? ");
-            int leftCustomers = in.nextInt();
-            while (leftCustomers > customersLenght) {
-                System.out.println("Dado incorreto! O restaurante não possui essa quantidade de clientes, tente novamente!");
-                System.out.print("Algum cliente saiu? ");
-                leftCustomers = in.nextInt();
+            System.out.print("Algum Grupo saindo/entrando? ");
+            int changeCustomers = (in.nextInt()) + customersLenght;
+            while (changeCustomers < 0 || changeCustomers > 100) {
+                System.out.println("\u001b[31mDado incorreto. O grupo é tem pessoas demais para entrar/sair. tente novamente!\u001b[0m");
+                System.out.print("Algum Grupo saindo/entrando? ");
+                changeCustomers = customersLenght + in.nextInt();
             }
-            customersLenght = customersLenght - leftCustomers;
-            System.out.println("O restaurante possui " + customersLenght + " clientes!");
-            System.out.print("Próximo grupo da fila possui quantas pessoas? ");
-            int nextGroup = in.nextInt();
-            if((customersLenght + nextGroup) > 100){
-                System.out.println("O grupo ainda não pode entrar!");
-            }else{
-                System.out.println("O grupo já pode entrar!");
-                customersLenght += nextGroup; 
-            }
-            System.out.println("O restaurante possui " + customersLenght + " clientes!\n");
+            customersLenght = changeCustomers;
+            System.out.println("\u001b[36mO restaurante possui " + customersLenght + " clientes!\u001b[0m\n");
         }
-        System.out.print("Lotação máxima de 100 clientes atingida!");
+        System.out.print("\u001b[32mLotação máxima de 100 clientes atingida!\u001b[0m");
         in.close();
     }
 }
