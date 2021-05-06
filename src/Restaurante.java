@@ -18,14 +18,14 @@ public class Restaurante {
             System.out.print("Grupo de quantas pessoas saindo/entrando? ");
             int changeCustomers = (in.nextInt()) + customersLenght;
             while (changeCustomers < 0 || changeCustomers > 100) {
-                System.out.println("\u001b[31mDado incorreto. O grupo digitado tem pessoas demais para entrar/sair. Tente novamente!\u001b[0m");
-                System.out.print(" Grupo de quantas pessoas saindo/entrando? ");
+                System.out.println("Dado incorreto. O grupo digitado tem pessoas demais para entrar/sair. Tente novamente!");
+                System.out.print("Grupo de quantas pessoas saindo/entrando? ");
                 changeCustomers = customersLenght + in.nextInt();
             }
             customersLenght = changeCustomers;
-            System.out.println("\u001b[36mO restaurante possui " + customersLenght + " clientes!\u001b[0m\n");
+            System.out.println("O restaurante possui " + customersLenght + " clientes!\n");
         }
-        System.out.print("\u001b[32mLotação máxima de 100 clientes atingida!\u001b[0m");
+        System.out.print("Lotação máxima de 100 clientes atingida!");
         in.close();
     }
 }
