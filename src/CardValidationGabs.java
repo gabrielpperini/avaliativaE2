@@ -13,19 +13,18 @@ public class CardValidationGabs {
         Scanner in = new Scanner(System.in);
         System.out.print("Digite o número do seu cartão: ");
         String numCartao = in.next();
-        System.out.println(numCartao);
+        // System.out.println(numCartao);
 
         int tamanho = numCartao.length();
         while (tamanho != 8) { // Verifica se o número contém 8 dígitos
             System.out.println("ERROR: número deve conter 8 dígitos.");
-            System.out.println("Digite o número do seu cartão novamente: ");
+            System.out.print("Digite o número do seu cartão novamente: ");
             numCartao = in.next();
             tamanho = numCartao.length();
         }
 
         int soma1 = 0;
         int soma2 = 0;
-
     
         for (int i = 7; i >= 0; i--) { // Converte os dígitos em valores inteiros, começando pelo mais a direita
             char c = numCartao.charAt(i);
@@ -47,13 +46,13 @@ public class CardValidationGabs {
             
         }
         int soma = soma1 + soma2;
-        System.out.println(soma2);
-        System.out.println(soma);
-        if (soma % 10 == 0) { // Verifica se o cartão é válido
+        int resto = soma % 10;
+        if (resto == 0) { // Verifica se o cartão é válido
             System.out.println("O número do cartão é válido");
         }
         else {
             System.out.println("O número do cartão é inválido");
+            System.out.println("O digito verificador é: " + (10 - resto));
         }
 
     }
