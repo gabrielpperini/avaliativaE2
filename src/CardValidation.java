@@ -19,7 +19,7 @@ public class CardValidation {
         int soma = 0;
         int numResultantes = 0;
         
-        for (int i = 8; i <= 0; i--) { // Converte os dígitos em valores inteiros, começando pelo mais a direita
+        for (int i = 8; i >= 0; i--) { // Converte os dígitos em valores inteiros, começando pelo mais a direita
             char c = numCartao.charAt(i);
             int n = c - '0';
 
