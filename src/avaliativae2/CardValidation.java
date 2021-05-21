@@ -1,3 +1,4 @@
+package avaliativae2;
 import java.util.Scanner;
 
 /**
@@ -5,30 +6,29 @@ import java.util.Scanner;
  * 
  * @author Gabriel Perini and Camila Ilges
  * 
-*/
-public class CardValidationGabs {
-    
-    public static void main(String[] args)
-    {
+ */
+public class CardValidation {
+
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Digite o número do seu cartão: ");
         String numCartao = in.next();
         // System.out.println(numCartao);
 
-        int tamanho = numCartao.length();
-        while (tamanho != 8) { // Verifica se o número contém 8 dígitos
+        while (numCartao.length() != 8) { // Verifica se o número contém 8 dígitos
             System.out.println("ERROR: número deve conter 8 dígitos.");
             System.out.print("Digite o número do seu cartão novamente: ");
             numCartao = in.next();
-            tamanho = numCartao.length();
         }
 
         int soma1 = 0;
         int soma2 = 0;
+        int digitoVerificador = 0;
     
         for (int i = 7; i >= 0; i--) { // Converte os dígitos em valores inteiros, começando pelo mais a direita
             char c = numCartao.charAt(i);
             int n = c - '0';
+            if(i == 7) digitoVerificador = n;
 
             if (i % 2 == 0) {// Duplica os dígitos restantes e soma seus dígitos
                 int numRestantes = n * 2;
@@ -45,15 +45,17 @@ public class CardValidationGabs {
             }
             
         }
+        System.out.println(digitoVerificador);
         int soma = soma1 + soma2;
         int resto = soma % 10;
+        System.out.println(resto);
         if (resto == 0) { // Verifica se o cartão é válido
             System.out.println("O número do cartão é válido");
         }
         else {
             System.out.println("O número do cartão é inválido");
-            System.out.println("O digito verificador é: " + (10 - resto));
+            System.out.println("O digito verificador é: " + (10 - resto + digitoVerificador));
         }
-
+        
     }
 }

@@ -1,3 +1,4 @@
+package avaliativae2;
 import java.util.Scanner;
 
 /**
