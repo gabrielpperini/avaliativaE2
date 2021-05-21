@@ -1,7 +1,12 @@
 package avaliativa3;
-
 import java.util.Scanner;
 
+/**
+ * A simple code to tranform a postal code in a bar code
+ * 
+ * @author Gabriel Perini and Camila Ilges
+ * 
+ */
 public class BarCode {
     public static void main(String[] args) 
     {
@@ -33,6 +38,14 @@ public class BarCode {
         System.out.println(code);
     }
 
+    /**
+     * 
+     * Int to Code Method
+     * use to transform a integer in a code part
+     * 
+     * @param num
+     * @return String code
+     */
     public static String intToCode(int num)
     {
         num = (num == 0) ? 11 : num; // if the num is zero the two big bars must sum 11
