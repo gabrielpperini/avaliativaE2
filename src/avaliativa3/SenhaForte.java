@@ -7,41 +7,38 @@ public class SenhaForte {
 
             System.out.println("Digite sua senha: ");
 
-            if (str.length() < 8) { // Verifica o número de caracteres
+            if (str.length() < 8) { // Verifica o número de caracteres.
                 System.out.println("A senha deve conter 8 caracteres ou mais. Digite nova senha.");  
             }
+            String temMaiuscula = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String temMinucula = "abcdefghijklmnopqrstuvwxyz";
+            String temDigito = "0123456789";
             boolean resultado;
-            for (int i = 0; i <= str.length(); i++){ // Percorre a senha
-                while (str.charAt(i) != "A" && "B" && "C" && "D" && "E") { // Verifica se há letra maiúscula
+
+            for (int i = 0; i <= str.length(); i++){ // Percorre cada caracter da senha.
+                while (str.contains(i) != temMaiuscula) { // Verifica se há letra maiúscula.
                     resultado = false;
-                }
-                if (resultado = false) {
-                    System.out.println("A senha deve conter, no mínimo, um dígito. Digite nova senha.");
-                }
-                else {
-                    while (str.charAt(i) != "a" && "b" && "c" && "d" && "e") { // Verifica se há letra minúscula
-                        resultado = false;
-                    }
-                    if (resultado = false) {
-                    System.out.println("A senha deve conter, no mínimo, um dígito. Digite nova senha.");
-                    }
-                    else {
-                        while (str.charAt(i) != "0" && "1" && "2" && "3" && "4" && "5" && "6" && "7" && "8" && "9") { // Verifica se há dígito
-                            resultado = false;
-                        }
-                        if (resultado = false) {
-                            System.out.println("A senha deve conter, no mínimo, um dígito. Digite nova senha.");
-                            resultado = false;
-                        }
-                        else {
-                            resultado = true;
-                        }
-                        return resultado;
-                    }
+                    System.out.println("A senha deve conter, no mínimo, uma letra maiúscula. Digite nova senha.");
                 }
             }
+            for (int i = 0; i <= str.length(); i++){ // Percorre cada caracter da senha.
+                while (str.contains(i) != temMinuscula) { // Verifica se há letra minúscula.
+                    resultado = false;
+                    System.out.println("A senha deve conter, no mínimo, uma letra minúscula. Digite nova senha.");
+                }
+            }
+            for (int i = 0; i <= str.length(); i++){ // Percorre cada caracter da senha.
+                while (str.contains(i) != temDigito) { // Verifica se há dígito.
+                    resultado = false;
+                    System.out.println("A senha deve conter, no mínimo, um dígito. Digite nova senha.");
+                }
+            }
+            return resultado;
+                
+            
+    }
     public static void main(String[] args) {
-        String str = "12345678e";
+        String str = "camila23";
         System.out.println(validaSenha(str));
     }
 }
