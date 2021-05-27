@@ -16,7 +16,7 @@ public class SenhaForte {
             boolean resultado;
 
             for (int i = 0; i <= str.length(); i++){ // Percorre cada caracter da senha.
-                while (str.contains(i) != temMaiuscula) { // Verifica se há letra maiúscula.
+                while (temMaiuscula.contains(str.charAt(i) + "")) { // Verifica se há letra maiúscula.
                     resultado = false;
                     System.out.println("A senha deve conter, no mínimo, uma letra maiúscula. Digite nova senha.");
                 }
