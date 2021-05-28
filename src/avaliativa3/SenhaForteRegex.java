@@ -4,6 +4,12 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class to validate a password with Regex
+ * 
+ * @author Gabriel Perini and Camila Ilges
+ * 
+ */
 public class SenhaForteRegex {
 
     private static final String PASSWORD_PATTERN =
@@ -24,6 +30,12 @@ public class SenhaForteRegex {
         in.close();
     }
 
+    /**
+     * Valida Senha
+     *  
+     * @param password | Sua senha
+     * @return boolean
+     */
     public static boolean validaSenha(String password) {
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();

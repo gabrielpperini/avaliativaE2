@@ -19,34 +19,50 @@ public class BarCode {
             System.out.print("Digite o código postal desejado: ");
             postalCode = in.next();
         }
+        imprimeCodigoBarra(postalCode);
+    }
+
+    /**
+     * Imprime Codigo de Barra Method
+     * use to transform a zipCode in a bar Code and print it
+     * 
+     * @param zipCode
+     * 
+     */
+    public static void imprimeCodigoBarra(String zipCode)
+    {
+        // print the first bar
+        System.out.print("|");
+
         /////////////////////////////////////
-        String code = ""; // the final code variable
         int soma = 0; // the sum to declare the digito verificador
         
         // tranform each digit in a code part 
-        for(int i = 0; i < postalCode.length();i++){
-            int num = postalCode.charAt(i) - '0';
+        for(int i = 0; i < zipCode.length();i++){
+            int num = zipCode.charAt(i) - '0';
             soma += num;
-            code += intToCode(num);
+
+            // print the code
+            imprimeDigito(num);
         }
 
-        // set the digito verificador
+        // set the digito verificador and print it as a code
         int digitoVerificador = 10 - (soma % 10 == 0 ? 10 : soma % 10);
+        imprimeDigito(digitoVerificador);
 
-        // add digito verificador and print the code
-        code = "|" + code + intToCode(digitoVerificador) + "|";
-        System.out.println(code);
+        // print the last bar
+        System.out.print("|");
     }
 
     /**
      * 
-     * Int to Code Method
-     * use to transform a integer in a code part
+     * Imprime Digito Method
+     * use to transform a integer in a code part and print it
      * 
      * @param num
-     * @return String code
+     * 
      */
-    public static String intToCode(int num)
+    public static void imprimeDigito(int num)
     {
         num = (num == 0) ? 11 : num; // if the num is zero the two big bars must sum 11
         int[] weights = {7,4,2,1,0}; 
@@ -76,7 +92,8 @@ public class BarCode {
             }
             code += bar;
         }
-        // System.out.println(code + "\n");
-        return code;
+
+        // print the code
+        System.out.print(code);
     }
 }
