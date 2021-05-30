@@ -11,8 +11,12 @@ import java.util.Scanner;
 public class SenhaForte {
 
     /**
-     * Testes: Hello123 ==> true 12345678 ==> false hello ==> false HELLO123 ==>
-     * false hello123 ==> false
+     * Testes: 
+     * Hello123 ==> true 
+     * 12345678 ==> false 
+     * hello ==> false 
+     * HELLO123 ==> false 
+     * hello123 ==> false
      * 
      * @param args
      */
