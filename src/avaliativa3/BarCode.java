@@ -9,14 +9,28 @@ import java.util.regex.Pattern;
  * 
  */
 public class BarCode {
-    private static final String POSTALCODE_PATTERN = "^[0-9]{5}$";
+
+    /**
+     * Main Method
+     * Require a postal code and valid it to call the method imprimeCodigoBarra
+     * 
+     * @param args
+     * 
+     * Testes: 
+     * 55000 ==> |:|:|::|:|:||:::||:::||:::||:::|
+     * 02313 ==> |||:::::|:|::||::::||::||::::|||
+     * 12345 ==> |:::||::|:|::||::|::|:|:|::|:|:|
+     * 44444 ==> |:|::|:|::|:|::|:|::|:|::|||:::|
+     * 00000 ==> |||:::||:::||:::||:::||:::||:::|
+     * 00001 ==> |||:::||:::||:::||::::::|||:|::|
+    */
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
         // Set the postal code with a scanner
         System.out.print("Digite o código postal desejado: ");
         String postalCode = in.next();
-        while (!Pattern.matches(POSTALCODE_PATTERN,postalCode)) {
+        while (!Pattern.matches("^[0-9]{5}$",postalCode)) {
             System.out.println("ERROR: Código postal inválido!");
             System.out.print("Digite o código postal desejado: ");
             postalCode = in.next();

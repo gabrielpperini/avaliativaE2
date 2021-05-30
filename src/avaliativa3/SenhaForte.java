@@ -11,14 +11,17 @@ import java.util.Scanner;
 public class SenhaForte {
 
     /**
+     * Main Method
+     * Require a password to call the method validaSenha
+     * 
+     * @param args
+     * 
      * Testes: 
      * Hello123 ==> true 
      * 12345678 ==> false 
      * hello ==> false 
      * HELLO123 ==> false 
      * hello123 ==> false
-     * 
-     * @param args
      */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
