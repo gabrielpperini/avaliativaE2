@@ -1,5 +1,6 @@
 package avaliativa3;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * A simple code to tranform a postal code in a bar code
@@ -8,18 +9,20 @@ import java.util.Scanner;
  * 
  */
 public class BarCode {
+    private static final String POSTALCODE_PATTERN = "^[0-9]{5}$";
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
         // Set the postal code with a scanner
         System.out.print("Digite o código postal desejado: ");
         String postalCode = in.next();
-        while (postalCode.length() != 5) {
+        while (!Pattern.matches(POSTALCODE_PATTERN,postalCode)) {
             System.out.println("ERROR: Código postal inválido!");
             System.out.print("Digite o código postal desejado: ");
             postalCode = in.next();
         }
         imprimeCodigoBarra(postalCode);
+        in.close();
     }
 
     /**
