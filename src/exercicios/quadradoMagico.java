@@ -1,3 +1,4 @@
+package exercicios;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -5,7 +6,7 @@ import java.util.List;
 /**
  * quadradoMagico
  */
-public class quadradoMagico {
+public class QuadradoMagico {
 
     public static void main(String[] args) {
         // int[][] quadrado = getQuadradoByScanner();
