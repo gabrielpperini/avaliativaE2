@@ -53,13 +53,13 @@ public class AvaliaDesempenhoFisico {
     }
     public String retornaDesempenho() {
         if (burpee <= 8 || flexao <= 8 || abdominal <= 8) {
-            System.out.println("O seu desempenho é: iniciante");
+            return "iniciante";
         }
         else if (burpee > 15 || flexao > 15 || abdominal > 15) {
-            System.out.println("O seu desempenho é: avançado");
+            return "avançado";
         }
         else {
-            System.out.println("O seu desempenho é: moderado");
+            return "moderado";
         }
     }
 }
