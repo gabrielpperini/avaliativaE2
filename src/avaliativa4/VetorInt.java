@@ -9,7 +9,7 @@ public class VetorInt {
     // Interface Pública
     public VetorInt() { // inicializa o vetor com 10 posições, todas com o valor 0.
         tamanho = 10;
-        for (int i; i < vetor.length; i++) {
+        for (int i = 0 ; i < vetor.length; i++) {
             vetor[i] = 0;
         }
     }  
