@@ -1,55 +1,64 @@
 package avaliativa4;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class StartTreino {
-    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException, FileNotFoundException {
         clearScreen();
         Scanner terminal = new Scanner(System.in);
         System.out.println("Olá bem-vindo a academia FitSpace\n");
-        Thread.sleep(2000);
-        System.out.println("Escolha alguma opção: ");
-        System.out.println("1 - Treino Iniciante");
-        System.out.println("2 - Treino Intermediário");
-        System.out.println("3 - Treino Avançado");
-        System.out.println("4 - Treino Customizado");
+        Thread.sleep(1000);
+        printChoice();
 
         int opt = terminal.nextInt();
 
         while (opt != 1 && opt != 2 && opt != 3 && opt != 4) {
             clearScreen();
             System.out.println("Opção Inválida\n");
-            System.out.println("Escolha alguma opção: ");
-            System.out.println("1 - Treino Iniciante");
-            System.out.println("2 - Treino Intermediário");
-            System.out.println("3 - Treino Avançado");
-            System.out.println("4 - Treino Customizado");
+            Thread.sleep(500);
+            printChoice();
             opt = terminal.nextInt();
         }
         clearScreen();
+        String treinoFileName = selectTreino(opt);
+
+        System.out.println("Seu treino foi finalizado!");
+        System.out.print("Deseja abri-lo? [sim/nao]: ");
+        String res = terminal.next();
+
+        if (res.equals("sim")) {
+            openTxtFile(treinoFileName);
+        }
+
+        terminal.close();
+    }
+
+    public static String selectTreino(int opt) throws FileNotFoundException, InterruptedException {
+        String treinoFileName = "";
         switch (opt) {
             case 1:
                 Treino treinoIni = createTreinoIniciante();
                 treinoIni.printTreinoListed();
-
+                treinoFileName = treinoIni.getName() + ".txt";
                 break;
             case 2:
                 Treino treinoInter = createTreinoIntermediario();
                 treinoInter.printTreinoListed();
-
+                treinoFileName = treinoInter.getName() + ".txt";
                 break;
             case 3:
-
                 Treino treinoAvancado = createTreinoAvancado();
                 treinoAvancado.printTreinoListed();
+                treinoFileName = treinoAvancado.getName() + ".txt";
                 break;
             case 4:
 
                 break;
         }
-
-        terminal.close();
+        fakeLoading();
+        return treinoFileName;
     }
 
     public static Treino createTreinoIniciante() {
@@ -107,11 +116,41 @@ public class StartTreino {
         return treino;
     }
 
-    
-    private static void clearScreen()
-    {  
+    private static void clearScreen() {
         System.out.print('\u000C');
         System.out.print("\033[H\033[2J");
-        System.out.flush();  
+        System.out.flush();
+    }
+
+    private static void openTxtFile(String local) throws IOException {
+        String file = "start \'" + System.getProperty("user.dir") + "\\treinos\\" + local + "\'";
+        ProcessBuilder builder = new ProcessBuilder("powerShell.exe", file);
+        builder.redirectErrorStream(true);
+        builder.start();
+    }
+
+    private static void fakeLoading() throws InterruptedException
+    {
+        String dots = ".";
+        for (int i = 0; i < 10; i++) {
+            clearScreen();
+            System.out.println("Loading" + dots);
+            if(dots.equals("...")){
+                dots = ".";
+            }else{
+                dots += ".";
+            }
+            Thread.sleep(500);
+        }
+        clearScreen();
+    }
+
+    private static void printChoice()
+    {
+        System.out.println("Escolha alguma opção: ");
+        System.out.println("1 - Treino Iniciante");
+        System.out.println("2 - Treino Intermediário");
+        System.out.println("3 - Treino Avançado");
+        System.out.println("4 - Treino Customizado");
     }
 }

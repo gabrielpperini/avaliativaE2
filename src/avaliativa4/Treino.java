@@ -28,7 +28,6 @@ public class Treino {
     }
 
     public void printTreinoListed() throws FileNotFoundException {
-        Scanner terminal = new Scanner(System.in);
         PrintWriter printTreino = new PrintWriter("treinos/" + this.name + ".txt");
         printTreino.println(this.name + "\n");
         printTreino.printf("Tempo: %.2f Minutos\n\n",this.time);
@@ -41,7 +40,6 @@ public class Treino {
         printTreino.println("\n\nNível do treino: " + getPerformaceLabel());
 
         printTreino.close();
-        terminal.close();
     }
 
     private double getTotalPerformace()
@@ -64,5 +62,9 @@ public class Treino {
         }else{
             return "Intermediário";
         }
+    }
+
+    public String getName() {
+        return name;
     }
 }
