@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class StartTreino {
+
+    public static final Scanner terminal = new Scanner(System.in);
+    
     public static void main(String[] args) throws InterruptedException, IOException, FileNotFoundException {
         clearScreen();
-        Scanner terminal = new Scanner(System.in);
         System.out.println("Olá bem-vindo a academia FitSpace\n");
         Thread.sleep(1000);
         printChoice();
@@ -54,7 +56,9 @@ public class StartTreino {
                 treinoFileName = treinoAvancado.getName() + ".txt";
                 break;
             case 4:
-
+                Treino treinoCustom = createTreinoCustomizado();
+                treinoCustom.printTreinoListed();
+                treinoFileName = treinoCustom.getName() + ".txt";
                 break;
         }
         fakeLoading();
@@ -116,6 +120,37 @@ public class StartTreino {
         return treino;
     }
 
+    public static Treino createTreinoCustomizado() {
+        System.out.print("Qual o nome do treino? ");
+        terminal.nextLine();
+        String nome = terminal.nextLine();
+        System.out.print("Qual o tempo do treino? ");
+        Double time = terminal.nextDouble();
+        Treino treino = new Treino(nome, time);
+        String addExe = "sim";
+        int countExe = 1;
+        do{
+            clearScreen();
+            System.out.println("Exercício #"+countExe);
+            System.out.println("");
+            System.out.print("Qual o nome do exercício? ");
+            terminal.nextLine();
+            String exeName = terminal.nextLine();
+            System.out.print("Quantas repetições serão feitas? ");
+            int exeRepeat = terminal.nextInt();
+            System.out.print("Quantas calorias são gastas a cada repetição? ");
+            Double exeCalories = terminal.nextDouble();
+            Exercise exercicio = new Exercise(exeName, exeRepeat, exeCalories);
+            treino.addExercise(exercicio);
+            
+            System.out.print("\nDeseja adicionar outro exercício? [sim/nao]: ");
+            addExe = terminal.next();
+            countExe++;
+        }while(addExe.equals("sim"));
+        
+        return treino;
+    }
+
     private static void clearScreen() {
         System.out.print('\u000C');
         System.out.print("\033[H\033[2J");
@@ -129,15 +164,14 @@ public class StartTreino {
         builder.start();
     }
 
-    private static void fakeLoading() throws InterruptedException
-    {
+    private static void fakeLoading() throws InterruptedException {
         String dots = ".";
         for (int i = 0; i < 10; i++) {
             clearScreen();
             System.out.println("Loading" + dots);
-            if(dots.equals("...")){
+            if (dots.equals("...")) {
                 dots = ".";
-            }else{
+            } else {
                 dots += ".";
             }
             Thread.sleep(500);
@@ -145,8 +179,7 @@ public class StartTreino {
         clearScreen();
     }
 
-    private static void printChoice()
-    {
+    private static void printChoice() {
         System.out.println("Escolha alguma opção: ");
         System.out.println("1 - Treino Iniciante");
         System.out.println("2 - Treino Intermediário");
