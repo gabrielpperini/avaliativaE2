@@ -3,6 +3,7 @@ package avaliativa4;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+// import java.io.*;
 
 public class StartTreino {
 
@@ -158,10 +159,18 @@ public class StartTreino {
     }
 
     private static void openTxtFile(String local) throws IOException {
-        String file = "start \'" + System.getProperty("user.dir") + "\\treinos\\" + local + "\'";
-        ProcessBuilder builder = new ProcessBuilder("powerShell.exe", file);
+        String file = "\"" + System.getProperty("user.dir") + "\\treinos\\" + local + "\"";
+        ProcessBuilder builder = new ProcessBuilder("cmd.exe","start","/c","notepad",file);
         builder.redirectErrorStream(true);
         builder.start();
+        // Process p = builder.start();
+        // BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        // String line;
+        // while (true) {
+        //     line = r.readLine();
+        //     if (line == null) { break; }
+        //     System.out.println(line);
+        // }
     }
 
     private static void fakeLoading() throws InterruptedException {
