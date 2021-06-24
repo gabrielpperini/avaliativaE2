@@ -16,39 +16,32 @@ import java.util.Arrays;
 public class VetorInt {
     // Atributos
     int vetor[];
-    int valor;
-    int soma;
-    int produto;
-    int elementos;
-    int capacidadeMax;
 
     // Interface Pública
     /**
-    * Método construtor para
-    * 
+    * Método construtor que inicializa o vetor com 10 posições, todas com o valor 0.
     */ 
-    public VetorInt() { // inicializa o vetor com 10 posições, todas com o valor 0.
+    public VetorInt() {
         vetor = new int[10];
         for (int i = 0 ; i < vetor.length; i++) {
             vetor[i] = 0;
         }
     }
     /**
-    * Método construtor para
-    * @param n
+    * Método construtor que inicializa o vetor com n posições, todas com o valor 0.
+    * @param n o número de posições que o vetor terá
     */ 
-    public VetorInt(int n) {  // inicializa o vetor com n posições, todas com o valor 0. n será sempre um valor inteiro positivo.
+    public VetorInt(int n) {
         vetor = new int[n];
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = 0;
         }
     }
     /**
-    * Método para
-    * @param  
-    * @return
+    * Método que insere i na próxima posição disponível do vetor.
+    * @param i o valor que será inserido no vetor
     */ 
-    public void insere(int i) { // se ainda houver espaço disponível, insere i na próxima posição disponível do vetor.
+    public void insere(int i) {
         valor = i;
         for (int j = 0; j < vetor.length; j++) {
             if (vetor[j] == 0) {
@@ -61,64 +54,58 @@ public class VetorInt {
         }
     }
     /**
-    * Método para
-    * @param  
-    * @return
+    * Método que remove o valor i do vetor, caso houver, e desloca os elementos a direita de i uma posição à esquerda.
+    * @param i o valor que será removido do vetor
     */ 
-    public void remove(int i) { // procura e, caso encontre, remove o valor i do vetor. Os elementos a direita de i no vetor precisarão ser deslocados uma posição à esquerda.
-        valor = i;
-        for (int j = 0; j < vetor.length; j++) {
-            if (vetor[j] == i) {
-                vetor[j] = 0;
+    public void remove(int i) {
+        int[] anotherArray = new int[vetor.length];
+        boolean inFirst = true;
+        for (int j = 0, k = 0; j < vetor.length; j++) {
+            if (vetor[j] == i && inFirst) {
+                inFirst = false;
                 continue;
             }
-            if (j > i) {
-                vetor[j - 1] = vetor[j];
-            }
+            anotherArray[k++] = vetor[j];
         }
+        this.vetor = anotherArray;
         
     }
     /**
-    * Método para
-    * @param  
-    * @return
+    * Método que imprime o vetor na tela.
     */ 
-    public void imprime() {  // imprime a vetor na tela. Por exemplo, se o vetor tiver os elementos 1, 2 e 3 nesta ordem, este método deve imprimir na tela "{1,2,3}"
-        System.out.print("{");
+    public void imprime() {
+        String[] numberAsStrings = new String[vetor.length];
         for (int i = 0; i < vetor.length; i++) {
-            System.out.printf("%d, ", vetor[i]); // virgula?
+            numberAsStrings[i] = vetor[i] + "";
         }
-        System.out.print("}");
+        String numbers = String.join(",", Arrays.asList(numberAsStrings));
+        System.out.println("{"+numbers+"}");
     }
     /**
-    * Método para
-    * @param  
-    * @return
+    * Método que adiciona i a todos os elementos do vetor.
+    * @param i o valor que será adicionado a cada elemento do vetor.
     */ 
-    public void adiciona(int i) { // adiciona i a todos os elementos do vetor
-        valor = i;
+    public void adiciona(int i) {
         for (int j = 0; j < vetor.length; j++) {
             vetor[j] = vetor[j] + i;
         }
     }
     /**
-    * Método para
-    * @param  
-    * @return
+    * Método que multiplica todos os elementos do vetor por um fator i.
+    * @param  i o valor pelo qual cada elemento do vetor será multiplicado.
     */ 
-    public void multiplica(int i) {  // multiplica todos os elementos do vetor por um fator i
+    public void multiplica(int i) {
         valor = i;
         for (int j = 0; j < vetor.length; j++) {
             vetor[j] = vetor[j] * i;
         }
     }
     /**
-    * Método para
-    * @param  
-    * @return
+    * Método que calcula o somatório dos elementos.
+    * @return o somatório dos elementos
     */ 
-    public int somatorio() {  // calcula o somatório dos elementos
-        soma = 0;
+    public int somatorio() { 
+        int soma = 0;
         for (int i = 0; i < vetor.length; i++) {
             soma = soma + vetor[i];
         }
@@ -129,7 +116,7 @@ public class VetorInt {
     * @return o produtório dos elementos
     */ 
     public int produtorio() { 
-        produto = 1;
+        int produto = 1;
         for (int i = 0; i < vetor.length; i++) {
             produto = produto * vetor[i];
         }
@@ -140,7 +127,7 @@ public class VetorInt {
     * @return quantidade de elementos já inseridos
     */ 
     public int tamanho() {
-        elementos = 0;
+        int elementos = 0;
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i] != 0) {
                 elementos = elementos + 1;
@@ -153,7 +140,7 @@ public class VetorInt {
     * @return a capacidade máxima do vetor
     */ 
     public int capacidade() {
-        capacidadeMax = 0;
+        int capacidadeMax = 0;
         for (int i = 0; i < vetor.length; i++) {
             capacidadeMax = capacidadeMax + 1;
         }
