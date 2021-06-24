@@ -3,8 +3,9 @@ import java.util.Arrays;
 
 public class VetorInt {
     // Atributos
-    int tamanho;
-    int [] vetor = new int[tamanho];
+    //int tamanho;
+    //int[] vetor = new int[tamanho];
+    int vetor[];
     int valor;
     int soma;
     int produto;
@@ -14,13 +15,15 @@ public class VetorInt {
 
     // Interface Pública
     public VetorInt() { // inicializa o vetor com 10 posições, todas com o valor 0.
-        tamanho = 10;
+        //tamanho = 10;
+        vetor = new int[10];
         for (int i = 0 ; i < vetor.length; i++) {
             vetor[i] = 0;
         }
     } 
     public VetorInt(int n) {  // inicializa o vetor com n posições, todas com o valor 0. n será sempre um valor inteiro positivo.
-        tamanho = n;
+        //tamanho = n;
+        vetor = new int[n];
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = 0;
         }
@@ -31,6 +34,7 @@ public class VetorInt {
         for (int j = 0; j < vetor.length; j++) {
             if (vetor[j] == 0) {
                 vetor[j] = i;
+                break;
             }
         }
     }
@@ -39,14 +43,11 @@ public class VetorInt {
         for (int j = 0; j < vetor.length; j++) {
             if (vetor[j] == i) {
                 vetor[j] = 0;
-                while (j < vetor.length) {
-                    vetor[j + 1] = vetor[j];
-                }
-            //    continue;
+                continue;
             }
-            // if (j > i) {
-            //     vetor[j - 1] = vetor[j];
-            // }
+            if (j > i) {
+                vetor[j - 1] = vetor[j];
+            }
         }
         
     }
@@ -107,13 +108,21 @@ public class VetorInt {
         return vetor[pos + 1];
     }
     public static void main(String[] args) {
-        VetorInt v1 = new VetorInt();
+        VetorInt v1 = new VetorInt(10);
         v1.insere(3);
         v1.insere(5);
         v1.insere(8);
         v1.insere(7);
         v1.insere(1);
-        v1.tamanho();
+        System.out.println("O tamanho é " + v1.tamanho());
+        System.out.println("A capacidade é " + v1.capacidade());
+        v1.imprime();
+        //v1.remove(5);
+        //v1.adiciona(1);
+        v1.multiplica(2);
+        v1.imprime();
+
+
     }
 }
 
