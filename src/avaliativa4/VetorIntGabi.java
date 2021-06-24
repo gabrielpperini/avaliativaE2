@@ -1,19 +1,19 @@
 package avaliativa4;
 import java.util.Arrays;
 
-public class VetorInt {
+public class VetorIntGabi {
     // Vetor de Inteiros
     int vetor[];
 
     // Interface Pública
-    public VetorInt() { // inicializa o vetor com 10 posições, todas com o valor 0.
+    public VetorIntGabi() { // inicializa o vetor com 10 posições, todas com o valor 0.
         //tamanho = 10;
         vetor = new int[10];
         for (int i = 0 ; i < vetor.length; i++) {
             vetor[i] = 0;
         }
     } 
-    public VetorInt(int n) {  // inicializa o vetor com n posições, todas com o valor 0. n será sempre um valor inteiro positivo.
+    public VetorIntGabi(int n) {  // inicializa o vetor com n posições, todas com o valor 0. n será sempre um valor inteiro positivo.
         //tamanho = n;
         vetor = new int[n];
         for (int i = 0; i < vetor.length; i++) {
