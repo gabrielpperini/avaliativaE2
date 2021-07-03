@@ -42,7 +42,6 @@ public class VetorInt {
     * @param i o valor que será inserido no vetor
     */ 
     public void insere(int i) {
-        valor = i;
         for (int j = 0; j < vetor.length; j++) {
             if (vetor[j] == 0) {
                 vetor[j] = i;
