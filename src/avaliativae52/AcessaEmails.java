@@ -4,11 +4,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Run Emails Program
+ * 
+ * @author Gabriel Perini and Camila Ilges
+ */
 public class AcessaEmails {
 
     public static final Scanner terminal = new Scanner(System.in);
     public static final CaixaDeEntrada mailBox = new CaixaDeEntrada();
 
+    /**
+     * Start the program
+     * 
+     * @param args
+     * @throws FileNotFoundException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         clearScreen();
         addDefaultsEmails();
@@ -17,6 +29,12 @@ public class AcessaEmails {
         selectOption(choice);
     }
 
+    /**
+     * Run a function based in a int choice
+     * 
+     * @param opt
+     * @throws InterruptedException
+     */
     public static void selectOption(int opt) throws InterruptedException {
         boolean finish = false;
         switch (opt) {
@@ -48,6 +66,11 @@ public class AcessaEmails {
         }
     }
 
+    /**
+     * Add an email to the mailBox
+     * 
+     * @throws InterruptedException
+     */
     public static void addEmail() throws InterruptedException {
         System.out.print("Qual é o Destinatário? ");
         terminal.nextLine();
@@ -75,6 +98,11 @@ public class AcessaEmails {
         }
     }
 
+    /**
+     * Remove an email from mailBox
+     * 
+     * @throws InterruptedException
+     */
     public static void removeEmail() throws InterruptedException {
         mailBox.mailList();
         System.out.print("Qual email deseja excluir? ");
@@ -83,6 +111,11 @@ public class AcessaEmails {
         mailBox.removeMessage(emailToRemove);
     }
 
+    /**
+     * Read an Email from mailBox
+     * 
+     * @throws InterruptedException
+     */
     public static void readEmail() throws InterruptedException {
         mailBox.mailList();
         System.out.print("Qual email deseja ler? ");
@@ -95,6 +128,11 @@ public class AcessaEmails {
         fakeLoading(6);
     }
 
+    /**
+     * Add Default Emails to the malBox from the file defaultEmails.txt
+     * 
+     * @throws FileNotFoundException
+     */
     public static void addDefaultsEmails() throws FileNotFoundException {
         File file = new File("defaultEmails.txt");
         Scanner fileOut = new Scanner(file);
@@ -117,6 +155,12 @@ public class AcessaEmails {
 
     }
 
+    /**
+     * Do a fake loading
+     * 
+     * @param time
+     * @throws InterruptedException
+     */
     private static void fakeLoading(int time) throws InterruptedException {
         String dots = ".";
         for (int i = 0; i < time; i++) {
@@ -132,6 +176,11 @@ public class AcessaEmails {
         clearScreen();
     }
 
+    /**
+     * Print the menu and ask the choice
+     * 
+     * @return
+     */
     private static int mainMenu() {
         System.out.println("Escolha alguma opção: ");
         System.out.println("1 - Adicionar Email");
@@ -142,6 +191,11 @@ public class AcessaEmails {
         return terminal.nextInt();
     }
 
+    /**
+     * Clear Screen
+     * 
+     * @return
+     */
     private static void clearScreen() {
         System.out.print('\u000C');
         System.out.print("\033[H\033[2J");
